@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/bincrafters/conan-CryptoPP.svg?branch=stable%2F5.6.5)](https://travis-ci.org/bincrafters/conan-CryptoPP)
 [![Build status](https://ci.appveyor.com/api/projects/status/a5snyovachh6e8nh?svg=true)](https://ci.appveyor.com/project/BinCrafters/conan-CryptoPP)
 
-
+Crypto++ Library is a free C++ class library of cryptographic schemes.
 
 [Conan.io](https://conan.io) package for [CryptoPP](https://github.com/someauthor/CryptoPP) project
 
