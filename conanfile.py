@@ -14,22 +14,19 @@ class CryptoPPConan(ConanFile):
     default_options = "shared=True"
 
     def source(self):
-        zipname = 'cryptopp565.zip'
-        url = 'http://cryptopp.com/%s' % zipname
-        sha256 = 'a75ef486fe3128008bbb201efee3dcdcffbe791120952910883b26337ec32c34'
+        zipname = "cryptopp565.zip"
+        url = "http://cryptopp.com/%s" % zipname
+        sha256 = "a75ef486fe3128008bbb201efee3dcdcffbe791120952910883b26337ec32c34"
         tools.download(url, zipname)
         tools.check_sha256(zipname, sha256)
         tools.unzip(zipname)
         os.unlink(zipname)
 
     def build(self):
-        env = ConfigureEnvironment(self.deps_cpp_info, self.settings)
-        if self.options.shared:
-            self.run('%s make dynamic' % env.command_line)
-        else:
-            self.run('%s make static' % env.command_line)
+        kind = "dynamic" if self.options.shared else "static"
+        self.run("make " + kind)
         if self.scope.build_tests:
-            self.run('%s make test check' % env.command_line)
+            self.run("make test check")
 
     def package(self):
         self.copy(pattern="*.h", dst="include/cryptopp", src=".")
